@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Document</title>
+    <h1 align="center" style="border:orange; border-width:5px; border-style:solid;">REGISTRATION FORM</h1>
+		<h3>PERSONAL INFORMATION</h3>
+
+</head>
+<body>
+    <script>
+            //validation function 
+                function show()
+                {
+                    //alert("success!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    let x = document.forms["myForm"]["fname"].value;
+		    let y = document.forms["myForm"]["address"].value;
+                    let z = document.forms["myForm"]["gender"].value;
+		    let t = document.forms["myForm"]["crse"].value;
+                    let a = document.forms["myForm"]["dob"].value;
+		    let w = document.forms["myForm"]["hobbies"].value;
+                    let pno = document.forms["myForm"]["pno"].value;
+		    let g= document.forms["myForm"]["guardian"].value;
+
+
+                        if (x == "") 
+                        {
+                            alert("Name must be filled out");
+                            fname.focus();
+                            return false;
+                        }
+			
+			if (y == "") 
+                        {
+                            alert("Address field can't make empty");
+                            return false;
+                        }
+			 if (z == "") 
+                        {
+                            alert("A gender should selected");
+                            return false;
+                        }
+			if (t == "") 
+                        {
+                            alert("course needed");
+                            return false;
+                        }
+
+                       
+                        if (a == "") 
+                        {
+                            alert("DOB is nessary");
+                            return false;
+			 }
+
+			if (w == "") 
+                        {
+                            alert("hobbies needed");
+                            return false;
+                        }
+                        if (pno == "") 
+                        {
+                            alert("Should have a phone number");
+                            return false;
+                        }
+			
+		
+			if (g == "") 
+                        {
+                            alert("guardians name necessary");
+                            return false;
+                        }
+                        if (!(document.forms["myForm"]["d1"].checked || document.forms["myForm"]["d2"].checked || document.forms["myForm"]["d3"].checked)) 
+                        {
+                            alert("Anyone of the activites should be selected ");
+                            return false;
+                        }
+                }
+
+    </script>
+    <form id="myForm" action="index.html" onsubmit="return show()">
+                            <label>ENTER THE NAME</label>
+                            <input type="text" name="fname" id="fname"><br><br>
+				
+
+				
+			
+			    <label> GENDER :</label><br> 
+			    <select name="gender" id="gender" style="width:20%;">
+                            <option value="">-SELECT-</option>
+                            <option value="male">-MALE-</option>
+                            <option value="female">-FEMALE-</option>
+			    <option value="others">-OTHERS-</option>
+                          </select> 
+				<br>  
+				<br> 
+  
+
+			 <label> COURSE :</label><br> 
+			    <select name="crse" id="crse" style="width:20%;">
+                            <option value="">-COURSE-</option>
+                            <option value="ba">-BA-</option>
+                            <option value="bsc">-BSC-</option>
+			    <option value="bca">-BCA-</option>
+                          </select> 
+				<br>  
+				<br> 
+			   
+
+                            <label>DATE OF BIRTH</label>
+                            <input type="date" name="dob" id="dob"><br><br>
+                       
+                            <label>ADDRESS:</label><br>
+                        <textarea cols="50" rows="5" name="address" id="address"></textarea>    <br><br>
+    
+                            <label>PHONE NUMBER</label>
+                            <input type="number" name="pno" id="pno" size="10"><br><br>
+
+			    <label>GUARDIAN</label>
+                            <input type="text" name="guardian" id="guardian"><br><br>
+				
+			    <label>HOBBIES:</label><br>
+                        <textarea cols="50" rows="1" name="hobbies" id="hobbies"></textarea>    <br><br>
+ 
+
+                       
+                            <label>EXTRA CARICCULAR ACTIVITIES</label><br>
+                       
+                            <input type="checkbox" name="d1" >DRAWING<br>
+                            <input type="checkbox" name="d2" >PAINTING<br>
+                            <input type="checkbox" name="d3" >DANCING<br><br>
+
+                 
+                            <button onclick="">SUBMIT</button>
+                            <button type="reset">RESET</button>
+                  
+    </form>
+</body>
+</html>
