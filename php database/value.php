@@ -48,7 +48,7 @@
 
         </th>
         <th>
-        <a href="display.php" style="border: radius 25px;">DISPLAY THE TABLE</a>
+        <a href="displaytable.php" style="border: radius 25px;">DISPLAY THE TABLE</a>
         </th>
     </tr>
 </table>
