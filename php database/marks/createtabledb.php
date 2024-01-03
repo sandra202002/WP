@@ -1,4 +1,4 @@
-?php
+<?php
 
 //checking connection
 $connection=new mysqli("localhost","root","","mark");
