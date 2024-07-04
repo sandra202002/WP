@@ -1,0 +1,379 @@
+create table employee(emp_id number(35) primary key,name varchar(50),dept varchar(50),salary number(35),city varchar(50));
+Table created.
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(35)
+ NAME                                               VARCHAR2(50)
+ DEPT                                               VARCHAR2(50)
+ SALARY                                             NUMBER(35)
+ CITY                                               VARCHAR2(50)
+
+SQL> insert into employee values(&emp_id,'&name','&dept',&salary,'&city');
+Enter value for emp_id: 10
+Enter value for name: sanoop
+Enter value for dept: sales
+Enter value for salary: 7000
+Enter value for city: chicago
+old   1: insert into employee values(&emp_id,'&name','&dept',&salary,'&city')
+new   1: insert into employee values(10,'sanoop','sales',7000,'chicago')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 12
+Enter value for name: livya
+Enter value for dept: marketting
+Enter value for salary: 8000
+Enter value for city: texas
+old   1: insert into employee values(&emp_id,'&name','&dept',&salary,'&city')
+new   1: insert into employee values(12,'livya','marketting',8000,'texas')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 16
+Enter value for name: kiran
+Enter value for dept: sales
+Enter value for salary: 10000
+Enter value for city: new york
+old   1: insert into employee values(&emp_id,'&name','&dept',&salary,'&city')
+new   1: insert into employee values(16,'kiran','sales',10000,'new york')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 1
+Enter value for name: sandra
+Enter value for dept: marketing
+Enter value for salary: 9000
+Enter value for city: new jersey
+old   1: insert into employee values(&emp_id,'&name','&dept',&salary,'&city')
+new   1: insert into employee values(1,'sandra','marketing',9000,'new jersey')
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 3
+Enter value for name: anoop
+Enter value for dept: sales
+Enter value for salary: 10000
+Enter value for city: chicago
+old   1: insert into employee values(&emp_id,'&name','&dept',&salary,'&city')
+new   1: insert into employee values(3,'anoop','sales',10000,'chicago')
+
+1 row created.
+
+SQL> select * from employee;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7000
+chicago
+
+        12 livya
+marketting                                               8000
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+        16 kiran
+sales                                                   10000
+new york
+
+         1 sandra
+marketing                                                9000
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+new jersey
+
+         3 anoop
+sales                                                   10000
+chicago
+
+
+SQL> select * from employee where dept='sales';
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7000
+chicago
+
+        16 kiran
+sales                                                   10000
+new york
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+         3 anoop
+sales                                                   10000
+chicago
+
+
+SQL> select * from employee where emp_id='1';
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+         1 sandra
+marketing                                                9000
+new jersey
+
+
+SQL> select * from employee where salary between 7000 and 8000;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7000
+chicago
+
+        12 livya
+marketting                                               8000
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+
+SQL> update employee set salary='7600' where emp_id='10';
+
+1 row updated.
+
+SQL> select * from employee;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7600
+chicago
+
+        12 livya
+marketting                                               8000
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+        16 kiran
+sales                                                   10000
+new york
+
+         1 sandra
+marketing                                                9000
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+new jersey
+
+         3 anoop
+sales                                                   10000
+chicago
+
+
+SQL> select * from employee where salary between 7000 and 8000;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7600
+chicago
+
+        12 livya
+marketting                                               8000
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+
+SQL> select * from employee order by name;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+         3 anoop
+sales                                                   10000
+chicago
+
+        16 kiran
+sales                                                   10000
+new york
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+        12 livya
+marketting                                               8000
+texas
+
+         1 sandra
+marketing                                                9000
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+new jersey
+
+        10 sanoop
+sales                                                    7600
+chicago
+
+SQL> update employee set salary=salary+'250';
+
+5 rows updated.
+
+SQL> select * from employee;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+        10 sanoop
+sales                                                    7850
+chicago
+
+        12 livya
+marketting                                               8250
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+
+        16 kiran
+sales                                                   10250
+new york
+
+         1 sandra
+marketing                                                9250
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY
+--------------------------------------------------
+new jersey
+
+         3 anoop
+sales                                                   10250
+chicago
+
+
+SQL> alter table employee add join_date date;
+
+Table altered.
+
+SQL> select * from employee;
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY                                               JOIN_DATE
+-------------------------------------------------- ---------
+        10 sanoop
+sales                                                    7850
+chicago
+
+        12 livya
+marketting                                               8250
+texas
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY                                               JOIN_DATE
+-------------------------------------------------- ---------
+
+        16 kiran
+sales                                                   10250
+new york
+
+         1 sandra
+marketing                                                9250
+
+    EMP_ID NAME
+---------- --------------------------------------------------
+DEPT                                                   SALARY
+-------------------------------------------------- ----------
+CITY                                               JOIN_DATE
+-------------------------------------------------- ---------
+new jersey
+
+         3 anoop
+sales                                                   10250
+chicago

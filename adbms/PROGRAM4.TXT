@@ -1,0 +1,167 @@
+create table employee(emp_id number(30),name varchar(50),dep_id number(30),salary number(35));
+
+Table created.
+
+SQL> insert into department values(1,'cs','RAVI KUMAR');
+
+1 row created.
+
+SQL> insert into department values(2,'eec','JANVI');
+
+1 row created.
+
+SQL> insert into department values(3,'ECE','RITHU');
+
+1 row created.
+
+SQL> insert into department values(4,'cs','RAVI KUMAR');
+
+1 row created.
+
+SQL> insert into department values(5,'CIVIL','LIVYA MENON');
+
+1 row created.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         1 cs
+RAVI KUMAR
+
+         2 eec
+JANVI
+
+         3 ECE
+RITHU
+
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         4 cs
+RAVI KUMAR
+
+         5 CIVIL
+LIVYA MENON
+
+
+SQL> UPDATE DEPARTMENT SET DEPT_NAME='MECH' WHERE dep_id='4';
+
+1 row updated.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         1 cs
+RAVI KUMAR
+
+         2 eec
+JANVI
+
+         3 ECE
+RITHU
+
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         4 MECH
+RAVI KUMAR
+
+         5 CIVIL
+LIVYA MENON
+
+
+SQL> UPDATE DEPARTMENT SET HOD='SANAL' WHERE dep_id='4';
+
+1 row updated.
+
+SQL> SELECT * FROM DEPARTMENT;
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         1 cs
+RAVI KUMAR
+
+         2 eec
+JANVI
+
+         3 ECE
+RITHU
+
+
+    DEP_ID DEPT_NAME
+---------- --------------------------------------------------
+HOD
+--------------------------------------------------
+         4 MECH
+SANAL
+
+         5 CIVIL
+LIVYA MENON
+
+
+SQL> INSERT INTO EMPLOYEE VALUES(23,'SANDRA',2,35000);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(26,'jijo',1,25000);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(29,'ramya',4,20000);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(35,'nikhila',5,20600);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE VALUES(39,'tharaa',2,94000);
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEE;
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+        23 SANDRA                                                      2
+     35000
+
+        26 jijo                                                        1
+     25000
+
+        29 ramya                                                       4
+     20000
+
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+        35 nikhila                                                     5
+     20600
+
+        39 tharaa                                                      2
+     94000
+
+
+SQL> ALTER TABLE DEPARTMENT ADD PRIMARY KEY(DEP_ID);
+
+Table altered.
+
+SQL> ALTER TABLE EMPLOYEE ADD PRIMARY KEY(EMP_ID);
+
+Table altered.

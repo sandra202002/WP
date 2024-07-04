@@ -1,0 +1,276 @@
+SQL> create table department(dep_id int primary key,dep_name varchar(50),city varchar(50));
+
+Table created.
+
+SQL> create table employe(emp_id int primary key, name varchar(50),dep_id int, foreign key(dep_id) references department(dep_id),salary number(35));
+
+Table created.
+
+SQL> desc department;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(38)
+ DEP_NAME                                           VARCHAR2(50)
+ CITY                                               VARCHAR2(50)
+
+SQL> desc employe;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(38)
+ NAME                                               VARCHAR2(50)
+ DEP_ID                                             NUMBER(38)
+ SALARY                                             NUMBER(35)
+
+SQL> insert into department values(&dep_id,'&dep_name','&city');
+Enter value for dep_id: 12
+Enter value for dep_name: CS
+Enter value for city: texas
+old   1: insert into department values(&dep_id,'&dep_name','&city')
+new   1: insert into department values(12,'CS','texas')
+
+1 row created.
+
+SQL> /
+Enter value for dep_id: 13
+Enter value for dep_name: EEE
+Enter value for city: CaALIFORNIA
+old   1: insert into department values(&dep_id,'&dep_name','&city')
+new   1: insert into department values(13,'EEE','CaALIFORNIA')
+
+1 row created.
+
+SQL> /
+Enter value for dep_id: 14
+Enter value for dep_name: EC
+Enter value for city: TEXAS
+old   1: insert into department values(&dep_id,'&dep_name','&city')
+new   1: insert into department values(14,'EC','TEXAS')
+
+1 row created.
+
+SQL> /
+Enter value for dep_id: 15
+Enter value for dep_name: civil
+Enter value for city: NEW JERSEY
+old   1: insert into department values(&dep_id,'&dep_name','&city')
+new   1: insert into department values(15,'civil','NEW JERSEY')
+
+1 row created.
+
+SQL> /
+Enter value for dep_id: 16
+Enter value for dep_name: MECH
+Enter value for city: CALIFORNIA
+old   1: insert into department values(&dep_id,'&dep_name','&city')
+new   1: insert into department values(16,'MECH','CALIFORNIA')
+
+1 row created.
+
+
+SQL> Select * from department;
+
+    DEP_ID DEP_NAME
+---------- --------------------------------------------------
+CITY
+--------------------------------------------------
+        12 CS
+texas
+
+        13 EEE
+CaALIFORNIA
+
+        14 EC
+TEXAS
+
+
+    DEP_ID DEP_NAME
+---------- --------------------------------------------------
+CITY
+--------------------------------------------------
+        15 civil
+NEW JERSEY
+
+        16 MECH
+CALIFORNIA
+
+
+SQL> insert into department values(&emp_id,'&name',&dep_id,&salary);
+Enter value for emp_id: 245
+Enter value for name: ANOOP
+Enter value for dep_id: 14
+Enter value for salary: 20000
+old   1: insert into department values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into department values(245,'ANOOP',14,20000)
+insert into department values(245,'ANOOP',14,20000)
+            *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> insert into employe values(&emp_id,'&name',&dep_id,&salary);
+Enter value for emp_id: 245
+Enter value for name: ANOOP
+Enter value for dep_id: 14
+Enter value for salary: 20000
+old   1: insert into employe values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into employe values(245,'ANOOP',14,20000)
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 267
+Enter value for name: SANDRA
+Enter value for dep_id: 12
+Enter value for salary: 15000
+old   1: insert into employe values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into employe values(267,'SANDRA',12,15000)
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 278
+Enter value for name: ALFIYA
+Enter value for dep_id: 16
+Enter value for salary: 12000
+old   1: insert into employe values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into employe values(278,'ALFIYA',16,12000)
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 266
+Enter value for name: SANAL
+Enter value for dep_id: 13
+Enter value for salary: 1000
+old   1: insert into employe values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into employe values(266,'SANAL',13,1000)
+
+1 row created.
+
+SQL> /
+Enter value for emp_id: 287
+Enter value for name: SAVIYO
+Enter value for dep_id: 14
+Enter value for salary: 50000
+old   1: insert into employe values(&emp_id,'&name',&dep_id,&salary)
+new   1: insert into employe values(287,'SAVIYO',14,50000)
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYE;
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+       245 ANOOP                                                      14
+     20000
+
+       267 SANDRA                                                     12
+     15000
+
+       278 ALFIYA                                                     16
+     12000
+
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+       266 SANAL                                                      13
+      1000
+
+       287 SAVIYO                                                     14
+     50000
+
+
+SQL> UPDATE DEPARTMENT SET CITY='NEW JERSEY' WHERE DEP_ID='13';
+
+1 row updated.
+
+SQL> SELECT NAME,DEP_NAME FROM EMPLOYE,DEPARTMENT WHERE EMPLOYE.DEP_ID=DEPARTMENT.DEP_ID;
+
+NAME
+--------------------------------------------------
+DEP_NAME
+--------------------------------------------------
+SANDRA
+CS
+
+SANAL
+EEE
+
+SAVIYO
+EC
+
+
+NAME
+--------------------------------------------------
+DEP_NAME
+--------------------------------------------------
+ANOOP
+EC
+
+ALFIYA
+MECH
+
+SQL> SELECT NAME FROM EMPLOYE,DEPARTMENT WHERE CITY='TEXAS' AND EMPLOYE.DEP_ID=DEPARTMENT.DEP_ID;
+
+NAME
+--------------------------------------------------
+ANOOP
+SAVIYO
+
+SQL> DELETE FROM EMPLOYE WHERE NAME='ALFIYA';
+
+1 row deleted.
+
+SQL> UPDATE EMPLOYE SET SALARY=SALARY+'500' WHERE DEP_ID='12';
+
+1 row updated.
+
+SQL> SELECT * FROM EMPLOYE;
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+       245 ANOOP                                                      14
+     20000
+
+       267 SANDRA                                                     12
+     15500
+
+       266 SANAL                                                      13
+      1000
+
+
+    EMP_ID NAME                                                   DEP_ID
+---------- -------------------------------------------------- ----------
+    SALARY
+----------
+       287 SAVIYO                                                     14
+     50000
+
+
+SQL> SELECT NAME,DEP_NAME FROM EMPLOYE,DEPARTMENT WHERE SALARY>2000 AND EMPLOYE.DEP_ID=DEPARTMENT.DEP_ID;
+
+NAME
+--------------------------------------------------
+DEP_NAME
+--------------------------------------------------
+SANDRA
+CS
+
+SAVIYO
+EC
+
+ANOOP
+EC
+
+
+SQL> DELETE FROM DEPARTMENT WHERE DEP_NAME='MECH';
+
+1 row deleted.
+
+SQL>

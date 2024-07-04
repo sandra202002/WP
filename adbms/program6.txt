@@ -1,0 +1,145 @@
+SQL> create table products(pro_id int primary key,pro_name varchar(50),supplier_id number(30), categ_id number(30),unit varchar(50),price number(38));
+
+Table created.
+SQL> insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price);
+Enter value for pro_id: 1
+Enter value for pro_name: lays
+Enter value for supplier_id: 1
+Enter value for categ_id: 1
+Enter value for unit: 10x20
+Enter value for price: 15
+old   1: insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price)
+new   1: insert into products values(1,'lays',1,1,'10x20',15)
+
+1 row created.
+
+SQL> /
+Enter value for pro_id: 2
+Enter value for pro_name: rice
+Enter value for supplier_id: 1
+Enter value for categ_id: 1
+Enter value for unit: 24-12
+Enter value for price: 50
+old   1: insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price)
+new   1: insert into products values(2,'rice',1,1,'24-12',50)
+
+1 row created.
+
+SQL> /
+Enter value for pro_id: 3
+Enter value for pro_name: chips
+Enter value for supplier_id: 1
+Enter value for categ_id: 2
+Enter value for unit: 12x6
+Enter value for price: 50
+old   1: insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price)
+new   1: insert into products values(3,'chips',1,2,'12x6',50)
+
+1 row created.
+
+SQL> /
+Enter value for pro_id: 4
+Enter value for pro_name: kitkat
+Enter value for supplier_id: 2
+Enter value for categ_id: 2
+Enter value for unit: 10x17
+Enter value for price: 25
+old   1: insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price)
+new   1: insert into products values(4,'kitkat',2,2,'10x17',25)
+
+1 row created.
+
+SQL> insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price);
+Enter value for pro_id: 5
+Enter value for pro_name: cocoa powder
+Enter value for supplier_id: 2
+Enter value for categ_id: 2
+Enter value for unit: 12x8
+Enter value for price: 40
+old   1: insert into products values(&pro_id,'&pro_name',&supplier_id,&categ_id,'&unit',&price)
+new   1: insert into products values(5,'cocoa powder',2,2,'12x8',40)
+
+1 row created.
+
+SQL> select * from products;
+
+    PRO_ID PRO_NAME                                           SUPPLIER_ID
+---------- -------------------------------------------------- -----------
+  CATEG_ID UNIT                                                    PRICE
+---------- -------------------------------------------------- ----------
+         1 lays                                                         1
+         1 10x20                                                      15
+
+         2 rice                                                         1
+         1 24-12                                                      50
+
+         3 chips                                                        1
+         2 12x6                                                       50
+
+
+    PRO_ID PRO_NAME                                           SUPPLIER_ID
+---------- -------------------------------------------------- -----------
+  CATEG_ID UNIT                                                    PRICE
+---------- -------------------------------------------------- ----------
+         4 kitkat                                                       2
+         2 10x17                                                      25
+
+         5 cocoa powder                                                 2
+         2 12x8                                                       40
+
+
+SQL> select min(price) from products where supplier_id='2';
+
+MIN(PRICE)
+----------
+        25
+
+SQL> select max(price) from products where supplier_id='2';
+
+MAX(PRICE)
+----------
+        40
+
+
+SQL> select count(pro_name) from products where  categ_id='1';
+
+COUNT(PRO_NAME)
+---------------
+              2
+
+SQL> select count(pro_name) from products where price>20;
+
+COUNT(PRO_NAME)
+---------------
+              4
+
+SQL> select sum(price)from products where supplier_id='1';
+
+SUM(PRICE)
+----------
+       115
+
+SQL> select avg(price) from products;
+
+AVG(PRICE)
+----------
+        36
+
+
+SQL> select avg(price) from products where categ_id='1';
+
+AVG(PRICE)
+----------
+      32.5
+
+SQL> select pro_name from products where price >(select avg(price) from products);
+
+PRO_NAME
+--------------------------------------------------
+rice
+chips
+cocoa powder
+
+SQL> commit;
+
+Commit complete.
